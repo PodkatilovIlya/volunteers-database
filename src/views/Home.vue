@@ -3,6 +3,24 @@
     <template v-slot:top>
       <v-text-field v-model="search" label="Поиск" class="mx-4"></v-text-field>
     </template>
+    <template v-slot:item.fullName="{ item }">
+      <router-link to="Volunteer"> {{ item.fullName }} </router-link>
+    </template>
+    <template v-slot:item.phone="{ item }">
+      <a :href="`tel:${item.phone}`">
+        {{ item.phone }}
+      </a>
+    </template>
+    <template v-slot:item.email="{ item }">
+      <a :href="`mailto:${item.email}`">
+        {{ item.email }}
+      </a>
+    </template>
+    <template v-slot:item.vk="{ item }">
+      <a :href="item.vk" target="_blank">
+        {{ item.vk }}
+      </a>
+    </template>
   </v-data-table>
 </template>
 
@@ -17,25 +35,23 @@ export default class Home extends Vue {
   volunteers = [
     {
       fullName: 'Волонтеров Волонтер Волонтёрович',
-      level: 'Первопомощевик от Бога',
       dateOfBirth: '22.02.1918',
       phone: '89811111111',
       vk: 'https://vk.com/feed',
       email: 'email@email.email',
       homeAddress: 'Миллионная 11',
-      languages: 'Каракалпакский, Русский, Английский',
-      car: 'Конь и маленькая тележка',
-      specialSkills: 'Швец жнец на дуде игрец',
-      healthRestrictions: 'Нет',
-      clothingSize: '50',
       callsign: 'Каракалпак',
-      completedCourses: 'Все',
-      lastCourseDate: 'История КПСС',
-      totalShifts: '666',
-      lastShift: '07.11.1917',
-      statuses: 'Волонтер, Инструктор по борьбе с большевитской заразой',
-      workTime: 'Круглосуточно',
-      activity: 'Всегда активен',
+      activity: 'Активен',
+    },
+    {
+      fullName: 'Подкатилов Илья Сергеевич',
+      dateOfBirth: '01.03.1994',
+      phone: '89811111111',
+      vk: 'https://vk.com/feed',
+      email: 'email@email.email',
+      homeAddress: 'Дрезденская 20 ',
+      callsign: 'Север',
+      activity: 'Активен',
     },
   ]
 
@@ -43,10 +59,6 @@ export default class Home extends Vue {
     {
       text: 'ФИО',
       value: 'fullName',
-    },
-    {
-      text: 'Уровень',
-      value: 'level',
     },
     {
       text: 'Дата рождения',
@@ -69,56 +81,11 @@ export default class Home extends Vue {
       value: 'homeAddress',
     },
     {
-      text: 'Иностранные языки',
-      value: 'languages',
-    },
-    {
-      text: 'Личное авто',
-      value: 'car',
-    },
-    {
-      text: 'Специальные навыки',
-      value: 'specialSkills',
-    },
-    {
-      text: 'Ограничения по здоровью',
-      value: 'healthRestrictions',
-    },
-    {
-      text: 'Размер одежды',
-      value: 'clothingSize',
-    },
-    {
       text: 'Позывной',
       value: 'callsign',
     },
     {
-      text: 'Пройденные курсы',
-      value: 'completedCourses ',
-    },
-    {
-      text: 'Последнее прохождение курса',
-      value: 'lastCourseDate',
-    },
-    {
-      text: 'Всего дежурств',
-      value: 'totalShifts',
-    },
-    {
-      text: 'Последнее дежурство',
-      value: 'lastShift',
-    },
-    {
-      text: 'статусы в ПП',
-      value: 'statuses',
-      // инструктор/МИ/волонтер
-    },
-    {
-      text: 'часы работы',
-      value: 'workTime',
-    },
-    {
-      text: 'статус активности',
+      text: 'Статус активности',
       value: 'activity',
       // активен/резерв/выбыл.
     },
